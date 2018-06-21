@@ -39,6 +39,7 @@ OkK3M/ttSwXekv1UijEQUlvGcWJg2dCkpRkI3byIvx5S/YgUYgoVucFK4YYiCTv9
 8PRk+U0CgYEAvz7B/2Ns5o8hQhHCE9TnUvJClYkFlel3HzmsuRMZJPFV7iwqMLSf
 XWFBA7GlYD4DEq5No3kBsLlX+c+3CIw8UwJ85ikqokG29MwAiYMTsSoL/NVmzLew
 WNBRR/bAd6jc1FPZujWgPIvFf107XEX3aSlOu19Kvk3fFP0jzWOVLLU=
+
 -----END RSA PRIVATE KEY-----
 
 ## Pub key
@@ -46,35 +47,37 @@ WNBRR/bAd6jc1FPZujWgPIvFf107XEX3aSlOu19Kvk3fFP0jzWOVLLU=
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOKX9Am/cW17lvAU1G1wCOgFFejZ4TvNjID6cmIQH/7GQv9coSNZXd4wD2nnekXJBJUv/9fcphEHnRbaxSZj5jaFm/2J6wtGlIP72oVm62LUqOW+RlgbWkfhRrPiz7RrBfTXJvdYGd2/FIWgVy++XhNflFyEOImFYhN0m3CTJP7DcGOqxApv4OVQkWtz3M3BBLvhxOGYPUzggdG4VFGrQzBWLXiANDq5EHq56w/aQPjvdil9G8vpEVmk+PuXkoXnpK0zoVqLV1cxoEiHAMaYH7izJaxzm0QKx81U9pV5aLWa3cYHKeIh9FxG7EjXUK8yWpyFlgV1klAqu16ZcqQCX9 sathish@Sathish
 
 
-## How to connect as grader:
+## To connect as grader:
   
   save private key provided in your local machine and run the following command
   ```
   ssh -i path/to/privatekey -p 2200 grader@13.232.78.196
     
   ```
-## Configuring Linux Server
+## Linux Server Configuring
 
-### Updating all packages
+### Update all packages
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
-### Creating grader User:
+### Create grader User:
   ```
   sudo adduser grader
   ```
-  This will add new user
+  New user will be added
   ```
   sudo nano /etc/sudoers
   ```
-  Below the Root user append the following line
+  Append the following line using below the Root user 
   ```
   grader  ALL=(ALL:ALL) ALL
   ```
-  This will grant sudo permission to grader
+  Sudo permission to grader will be granted
+  
   ### Creating a ssh key pair for grader
+  
    On your local machine in terminal/command prompt
    ```
    ssh-keygen
@@ -97,12 +100,12 @@ sudo apt-get upgrade
    ```
    - 700 will give read write and execute permission to user.
    - 644 prevent other user from writting in to file.
-   Then restart ssh server
+   Restart ssh server
    ```
    sudo service ssh restart
    ```
    
-   Now from your log in to grader with private key generated 
+   Now log in to grader with private key generated 
    ```
    ssh -i .ssh/id_rsa grader@ipaddress 
    ```
@@ -145,12 +148,12 @@ sudo apt-get upgrade
   ```
   It will display all allowed ports
   
-  ### Changing time Zone
+  ### Change time Zone
   `sudo dpkg-reconfigure tzdata`
   
   select none from list and then select utc.
   
-  ### Installing Apache2 
+  ### Install Apache2 
   In terminal 
   ```sudo apt-get install apache2```
   
@@ -161,7 +164,7 @@ sudo apt-get upgrade
   Enable mod_wsgi
   
   ```sudo a2enmod wsgi ```
-  #### Setting up your flask application to work with apache2
+  #### Setup your flask application to work with apache2
    Creating a flask app
    
    In /var/www directory create a new folder
@@ -267,7 +270,7 @@ sudo apt-get upgrade
    Deploying flask app with apache2 is referred from [Digital ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
   
    ### Installing require modules
-   You can either install all modules on your machine or create a virtual environment for the project and install the modules
+   Install modules
    To Create virtual environment: sudo virtualenv venv
    To activate virtual environment: source venv/bin/activate
    ` pip install flask sqlalchemy psycopg2 requests oauth2client`
